@@ -11,7 +11,7 @@ export CDK_DEFAULT_ACCOUNT="$(aws sts get-caller-identity --query Account --outp
 export STACK_NAME="${STACK_NAME:-LaukiSupportStack}"
 
 if [ ! -d .venv ]; then
-  if [[ "${OS:-}" == "Windows_NT" || "${OSTYPE:-}" == msys* || "${OSTYPE:-}" == cygwin* || "$(uname -s 2>/dev/null)" == MINGW* || "$(uname -s 2>/dev/null)" == MSYS* || "$(uname -s 2>/dev/null)" == CYGWIN* ]]; then
+  if [ $OS = "Windows_NT" ]; then
     python -m venv .venv
   else
     python3 -m venv .venv
